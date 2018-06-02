@@ -15,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -160,6 +161,7 @@ public class Home extends AppCompatActivity {
         EditText editText1 = (EditText) findViewById(R.id.frag2_Price);
         String price = editText1.getText().toString();
         ImageView imageView = (ImageView) findViewById(R.id.frag2_qrcode);
+        final CheckBox checkBox = (CheckBox) findViewById(R.id.frag2_ethContract);
 
         if (description.length() == 0) {
             Toast.makeText(this, "Add Description", Toast.LENGTH_LONG).show();
@@ -179,8 +181,10 @@ public class Home extends AppCompatActivity {
 //                imageView.getLayoutParams().height = qrcode.getHeight();
 
                 // Show QRCODE in new activity
+                boolean eth = checkBox.isChecked();
                 Intent intent = new Intent(this, Sell_QRCode.class);
                 intent.putExtra("qrcode", qrcode);
+                intent.putExtra("eth_contract", eth);
                 startActivity(intent);
             } catch (WriterException e) {
                 e.printStackTrace();
