@@ -1,0 +1,880 @@
+/*
+
+* Based on Cover by https://twitter.com/mdo"  @mdo
+* added cover image and background color to match (green)
+*
+* Globals
+
+*/
+
+/* Links */
+a,
+a:focus,
+a:hover {
+  color: #fff;
+}
+
+/* Custom default button */
+.btn-default,
+.btn-default:hover,
+.btn-default:focus {
+  color: #333;
+  text-shadow: none; /* Prevent inheritence from `body` */
+  background-color: #fff;
+  border: 1px solid #fff;
+}
+
+
+/*
+ * Base structure
+ */
+
+html,
+body {
+/*css for full size background image*/
+  background: url(http://p1.pichost.me/i/66/1910819.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  
+  height: 100%;
+  background-color: #060;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 1px 3px rgba(0,0,0,.5);
+ 
+}
+
+/* Extra markup and styles for table-esque vertical and horizontal centering */
+.site-wrapper {
+  display: table;
+  width: 100%;
+  height: 100%; /* For at least Firefox */
+  min-height: 100%;
+  -webkit-box-shadow: inset 0 0 100px rgba(0,0,0,.5);
+          box-shadow: inset 0 0 100px rgba(0,0,0,.5);
+}
+.site-wrapper-inner {
+  display: table-cell;
+  vertical-align: top;
+}
+.cover-container {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* Padding for spacing */
+.inner {
+  padding: 30px;
+}
+
+
+/*
+ * Header
+ */
+.masthead-brand {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.masthead-nav > li {
+  display: inline-block;
+}
+.masthead-nav > li + li {
+  margin-left: 20px;
+}
+.masthead-nav > li > a {
+  padding-right: 0;
+  padding-left: 0;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff; /* IE8 proofing */
+  color: rgba(255,255,255,.95);
+  border-bottom: 2px solid transparent;
+}
+.masthead-nav > li > a:hover,
+.masthead-nav > li > a:focus {
+  background-color: transparent;
+  border-bottom-color: #a9a9a9;
+  border-bottom-color: rgba(255,255,255,.25);
+}
+.masthead-nav > .active > a,
+.masthead-nav > .active > a:hover,
+.masthead-nav > .active > a:focus {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+
+@media (min-width: 768px) {
+  .masthead-brand {
+    float: left;
+  }
+  .masthead-nav {
+    float: right;
+  }
+}
+
+
+/*
+ * Cover
+ */
+
+.cover {
+  padding: 0 20px;
+}
+.cover .btn-lg {
+  padding: 10px 20px;
+  font-weight: bold;
+}
+
+
+/*
+ * Footer
+ */
+
+.mastfoot {
+  color: #999; /* IE8 proofing */
+  color: rgba(255,255,255,.5);
+}
+
+
+/*
+ * Affix and center
+ */
+
+@media (min-width: 768px) {
+  /* Pull out the header and footer */
+  .masthead {
+    position: fixed;
+    top: 0;
+  }
+  .mastfoot {
+    position: fixed;
+    bottom: 0;
+  }
+  /* Start the vertical centering */
+  .site-wrapper-inner {
+    vertical-align: middle;
+  }
+  /* Handle the widths */
+  .masthead,
+  .mastfoot,
+  .cover-container {
+    width: 100%; /* Must be percentage or pixels for horizontal alignment */
+  }
+}
+
+@media (min-width: 992px) {
+  .masthead,
+  .mastfoot,
+  .cover-container {
+    width: 700px;
+  }
+}
+
+.menu, .button {
+  width: 140px;
+  height: 140px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.menu {
+  position: fixed;
+  top: 50px;
+  left: 50px;
+  -webkit-transition: -webkit-transform 1.125s cubic-bezier(0.39, 1.52, 0.46, 0.92);
+  transition: -webkit-transform 1.125s cubic-bezier(0.39, 1.52, 0.46, 0.92);
+  transition: transform 1.125s cubic-bezier(0.39, 1.52, 0.46, 0.92);
+  transition: transform 1.125s cubic-bezier(0.39, 1.52, 0.46, 0.92), -webkit-transform 1.125s cubic-bezier(0.39, 1.52, 0.46, 0.92);
+  -webkit-transform: scale3d(1, 1, 1);
+          transform: scale3d(1, 1, 1);
+  -webkit-transform-origin: top left;
+          transform-origin: top left;
+  cursor: pointer;
+}
+
+.button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 100%;
+  mix-blend-mode: multiply;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 33%;
+  font: 25px/100px Alegreya Sans, sans-serif;
+  -webkit-transition: -webkit-transform 0.75s cubic-bezier(0.39, 1.52, 0.46, 0.92);
+  transition: -webkit-transform 0.75s cubic-bezier(0.39, 1.52, 0.46, 0.92);
+  transition: transform 0.75s cubic-bezier(0.39, 1.52, 0.46, 0.92);
+  transition: transform 0.75s cubic-bezier(0.39, 1.52, 0.46, 0.92), -webkit-transform 0.75s cubic-bezier(0.39, 1.52, 0.46, 0.92);
+  will-change: transform;
+}
+.button.closed {
+  -webkit-transform: translate3d(0, 0, 0) !important;
+          transform: translate3d(0, 0, 0) !important;
+}
+
+.main {
+  color: #030f01;
+  text-align: center;
+  mix-blend-mode: normal;
+  line-height: 130px;
+  box-shadow: 0 0 0 5px rgba(3, 15, 1, 0.1);
+  -webkit-transition: border-color 0.75s, color 0.75s;
+  transition: border-color 0.75s, color 0.75s;
+  will-change: color, border-color, background;
+}
+.closed .main {
+  color: #f8f7f2;
+  box-shadow: 0 0 0 5px rgba(3, 15, 1, 0);
+}
+
+.home {
+  background-color: #1ba5cd;
+  top: 0%;
+  left: 225%;
+  background-image: url(https://bennettfeely.com/cdpn/home.svg);
+  -webkit-transition-duration: 0.525s;
+          transition-duration: 0.525s;
+}
+.closed .home {
+  -webkit-transform: translate3d(-225%, -10%, 0) rotate(-180deg);
+          transform: translate3d(-225%, -10%, 0) rotate(-180deg);
+}
+
+.music {
+  background-color: #1ab254;
+  top: 86.10368%;
+  left: 207.873%;
+  background-image: url(https://bennettfeely.com/cdpn/music.svg);
+  -webkit-transition-duration: 0.675s;
+          transition-duration: 0.675s;
+}
+.closed .music {
+  -webkit-transform: translate3d(-198.36244%, -89.19384%, 0) rotate(-180deg);
+          transform: translate3d(-198.36244%, -89.19384%, 0) rotate(-180deg);
+}
+
+.messages {
+  background-color: #fec72e;
+  top: 159.09908%;
+  left: 159.09908%;
+  background-image: url(https://bennettfeely.com/cdpn/messages.svg);
+  -webkit-transition-duration: 0.825s;
+          transition-duration: 0.825s;
+}
+.closed .messages {
+  -webkit-transform: translate3d(-153.22122%, -151.00892%, 0) rotate(-180deg);
+          transform: translate3d(-153.22122%, -151.00892%, 0) rotate(-180deg);
+}
+
+.places {
+  background-color: #fa7d39;
+  top: 207.873%;
+  left: 86.10368%;
+  background-image: url(https://bennettfeely.com/cdpn/places.svg);
+  -webkit-transition-duration: 0.975s;
+          transition-duration: 0.975s;
+}
+.closed .places {
+  -webkit-transform: translate3d(-91.98154%, -199.78284%, 0) rotate(-180deg);
+          transform: translate3d(-91.98154%, -199.78284%, 0) rotate(-180deg);
+}
+
+.bookmark {
+  background-color: #ee5656;
+  top: 225%;
+  left: 0%;
+  background-image: url(https://bennettfeely.com/cdpn/bookmark.svg);
+  -webkit-transition-duration: 1.125s;
+          transition-duration: 1.125s;
+}
+.closed .bookmark {
+  -webkit-transform: translate3d(-9.51056%, -228.09016%, 0) rotate(-180deg);
+          transform: translate3d(-9.51056%, -228.09016%, 0) rotate(-180deg);
+}
+
+.home1 {
+  background-image: url('../img/paris.jpg');
+  background-size: cover;
+  width: 100%;
+  height: 1000px;
+}
+
+.shape {
+  width: 300px;
+  height: 300px;
+  top: 355px;
+  position: relative;
+}
+
+/* Text styling in the main page */
+
+.styleText {
+  color: wheat;
+  top: 290px;
+  float: left;
+  margin-left: 5px;
+  position: relative;
+  font-size: 35px;
+  font-family: fantasy;
+}
+
+.styleText1 {
+  color: wheat;
+  top: 320px;
+  float: left;
+  margin-left: 150px;
+  position: relative;
+  font-size: 80px;
+  font-family: fantasy;
+}
+
+.menuBtn {
+  top: 462px;
+  float: left;
+  margin-left: 260px;
+  position: absolute;
+}
+
+/* Vertical nav bar in MapArr */
+
+
+/*  bhoechie tab */
+div.bhoechie-tab-container{
+  z-index: 10;
+  background-color: #ffffff;
+  padding: 0 !important;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  border:1px solid #ddd;
+  margin-top: 20px;
+  margin-left: 50px;
+  -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+  box-shadow: 0 6px 12px rgba(0,0,0,.175);
+  -moz-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+  background-clip: padding-box;
+  opacity: 0.97;
+  filter: alpha(opacity=97);
+}
+div.bhoechie-tab-menu{
+  padding-right: 0;
+  padding-left: 0;
+  padding-bottom: 0;
+}
+div.bhoechie-tab-menu div.list-group{
+  margin-bottom: 0;
+}
+div.bhoechie-tab-menu div.list-group>a{
+  margin-bottom: 0;
+}
+div.bhoechie-tab-menu div.list-group>a .glyphicon,
+div.bhoechie-tab-menu div.list-group>a .fa {
+  color: #5A55A3;
+}
+div.bhoechie-tab-menu div.list-group>a:first-child{
+  border-top-right-radius: 0;
+  -moz-border-top-right-radius: 0;
+}
+div.bhoechie-tab-menu div.list-group>a:last-child{
+  border-bottom-right-radius: 0;
+  -moz-border-bottom-right-radius: 0;
+}
+div.bhoechie-tab-menu div.list-group>a.active,
+div.bhoechie-tab-menu div.list-group>a.active .glyphicon,
+div.bhoechie-tab-menu div.list-group>a.active .fa{
+  background-color: #5A55A3;
+  background-image: #5A55A3;
+  color: #ffffff;
+}
+div.bhoechie-tab-menu div.list-group>a.active:after{
+  content: '';
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  margin-top: -13px;
+  border-left: 0;
+  border-bottom: 13px solid transparent;
+  border-top: 13px solid transparent;
+  border-left: 10px solid #5A55A3;
+}
+
+div.bhoechie-tab-content{
+  background-color: #ffffff;
+  /* border: 1px solid #eeeeee; */
+  padding-left: 20px;
+  padding-top: 10px;
+}
+
+div.bhoechie-tab div.bhoechie-tab-content:not(.active){
+  display: none;
+}
+
+
+.markerPos1 {
+  
+  position: relative;
+  top: 350px;
+  left: 896px;
+  height: 21px;
+  width: 21px;
+  background-color: #555;
+  border-radius: 50%;
+}
+
+.markerPos1:hover {
+ 
+  position: relative;
+  top: 350px;
+  left: 896px;
+  height: 21px;
+  width: 21px;
+  background-color: yellow;
+  border-radius: 50%;
+}
+
+.markerPos2 {
+  position: relative;
+  top: 288px;
+  left: 922px;
+  height: 21px;
+  width: 21px;
+  background-color: #555;
+  border-radius: 50%;
+}
+
+.markerPos2:hover {
+  position: relative;
+  top: 288px;
+  left: 922px;
+  height: 21px;
+  width: 21px;
+  background-color: yellow;
+  border-radius: 50%;
+}
+
+.markerPos3 {
+  position: relative;
+  top: 295px;
+  left: 1006px;
+  height: 21px;
+  width: 21px;
+  background-color: #555;
+  border-radius: 50%;
+}
+
+.markerPos3:hover {
+  position: relative;
+  top: 295px;
+  left: 1006px;
+  height: 21px;
+  width: 21px;
+  background-color: yellow;
+  border-radius: 50%;
+}
+
+.markerPos4 {
+  position: relative;
+  top: 327px;
+  left: 995px;
+  height: 21px;
+  width: 21px;
+  background-color: #555;
+  border-radius: 50%;
+}
+
+.markerPos4:hover {
+  position: relative;
+  top: 327px;
+  left: 995px;
+  height: 21px;
+  width: 21px;
+  background-color: yellow;
+  border-radius: 50%;
+}
+
+.markerPos5 {
+ 
+  position: relative;
+  top: 397px;
+  left: 954px;
+  height: 21px;
+  width: 21px;
+  background-color: #555;
+  border-radius: 50%;
+}
+
+.markerPos5:hover {
+
+  position: relative;
+  top: 397px;
+  left: 954px;
+  height: 21px;
+  width: 21px;
+  background-color: yellow;
+  border-radius: 50%;
+}
+
+
+
+.markerPos6 {
+  
+  position: relative;
+  top: 307px;
+  left: 906px;
+  height: 21px;
+  width: 21px;
+  background-color: #555;
+  border-radius: 50%;
+}
+
+.markerPos6:hover {
+
+  position: relative;
+  top: 307px;
+  left: 906px;
+  height: 21px;
+  width: 21px;
+  background-color:yellow;
+  border-radius: 50%;
+}
+
+
+.markerPos7 {
+ 
+  position: relative;
+  top: 251px;
+  left: 776px;
+  height: 21px;
+  width: 21px;
+  background-color: #555;
+  border-radius: 50%;
+}
+
+.markerPos7:hover {
+
+  position: relative;
+  top: 251px;
+  left: 776px;
+  height: 21px;
+  width: 21px;
+  background-color: yellow;
+  border-radius: 50%;
+}
+
+
+.markerPos8 {
+  
+  position: relative;
+  top: 120px;
+  left: 765px;
+  height: 21px;
+  width: 21px;
+  background-color: #555;
+  border-radius: 50%;
+}
+
+.markerPos8:hover {
+
+  position: relative;
+  top: 120px;
+  left: 765px;
+  height: 21px;
+  width: 21px;
+  background-color: yellow;
+  border-radius: 50%;
+}
+
+
+.markerPos9 {
+ 
+  position: relative;
+  top: 56px;
+  left: 887px;
+  height: 21px;
+  width: 21px;
+  background-color: #555;
+  border-radius: 50%;
+}
+
+.markerPos9:hover {
+
+  position: relative;
+  top: 56px;
+  left: 887px;
+  height: 21px;
+  width: 21px;
+  background-color: yellow;
+  border-radius: 50%;
+}
+
+
+.markerPos10 {
+  
+  position: relative;
+  top: 18px;
+  left: 1049px;
+  height: 21px;
+  width: 21px;
+  background-color: #555;
+  border-radius: 50%;
+}
+
+.markerPos10:hover {
+
+  position: relative;
+  top: 18px;
+  left: 1049px;
+  height: 21px;
+  width: 21px;
+  background-color: yellow;
+  border-radius: 50%;
+}
+
+
+.markerPos11 {
+ 
+  position: relative;
+  top: 121px;
+  left: 1097px;
+  height: 21px;
+  width: 21px;
+  background-color: #555;
+  border-radius: 50%;
+}
+
+.markerPos11:hover {
+
+  position: relative;
+  top: 121px;
+  left: 1097px;
+  height: 21px;
+  width: 21px;
+  background-color: yellow;
+  border-radius: 50%;
+}
+
+
+.markerPos12 {
+ 
+  position: relative;
+  top: 250px;
+  left: 1139px;
+  height: 21px;
+  width: 21px;
+  background-color: #555;
+  border-radius: 50%;
+}
+
+.markerPos12:hover {
+
+  position: relative;
+  top: 250px;
+  left: 1139px;
+  height: 21px;
+  width: 21px;
+  background-color: yellow;
+  border-radius: 50%;
+}
+
+
+.markerPos13 {
+ 
+  position: relative;
+  top: 317px;
+  left: 993px;
+  height: 21px;
+  width: 21px;
+  background-color: #555;
+  border-radius: 50%;
+}
+
+.markerPos13:hover {
+
+  position: relative;
+  top: 317px;
+  left: 993px;
+  height: 21px;
+  width: 21px;
+  background-color: yellow;
+  border-radius: 50%;
+}
+
+
+.markerPos14 {
+  
+  position: relative;
+  top: 299px;
+  left: 836px;
+  height: 21px;
+  width: 21px;
+  background-color: #555;
+  border-radius: 50%;
+}
+
+.markerPos14:hover {
+
+  position: relative;
+  top: 299px;
+  left: 836px;
+  height: 21px;
+  width: 21px;
+  background-color: yellow;
+  border-radius: 50%;
+}
+
+
+.markerPos15 {
+ 
+  position: relative;
+  top: 181px;
+  left: 665px;
+  height: 21px;
+  width: 21px;
+  background-color: #555;
+  border-radius: 50%;
+}
+
+.markerPos15:hover {
+
+  position: relative;
+  top: 181px;
+  left: 665px;
+  height: 21px;
+  width: 21px;
+  background-color: yellow;
+  border-radius: 50%;
+}
+
+
+.markerPos16 {
+  
+  position: relative;
+  top: 2px;
+  left: 626px;
+  height: 21px;
+  width: 21px;
+  background-color: #555;
+  border-radius: 50%;
+}
+
+.markerPos16:hover {
+
+  position: relative;
+  top: 2px;
+  left: 626px;
+  height: 21px;
+  width: 21px;
+  background-color: yellow;
+  border-radius: 50%;
+}
+
+
+.markerPos17 {
+ 
+  position: relative;
+  top: -216px;
+  left: 756px;
+  height: 21px;
+  width: 21px;
+  background-color: #555;
+  border-radius: 50%;
+}
+
+.markerPos17:hover {
+
+  position: relative;
+  top: -216px;
+  left: 756px;
+  height: 21px;
+  width: 21px;
+  background-color: yellow;
+  border-radius: 50%;
+}
+
+
+.markerPos18 {
+  
+  position: relative;
+  top: -274px;
+  left: 935px;
+  height: 21px;
+  width: 21px;
+  background-color: #555;
+  border-radius: 50%;
+}
+
+.markerPos18:hover {
+
+  position: relative;
+  top: -274px;
+  left: 935px;
+  height: 21px;
+  width: 21px;
+  background-color: yellow;
+  border-radius: 50%;
+}
+
+
+.markerPos19 {
+  
+  position: relative;
+  top: -254px;
+  left: 1109px;
+  height: 21px;
+  width: 21px;
+  background-color: #555;
+  border-radius: 50%;
+}
+
+.markerPos19:hover {
+
+  position: relative;
+  top: -254px;
+  left: 1109px;
+  height: 21px;
+  width: 21px;
+  background-color: yellow;
+  border-radius: 50%;
+}
+
+
+.markerPos20 {
+  
+  position: relative;
+  top: -107px;
+  left: 1201px;
+  height: 21px;
+  width: 21px;
+  background-color: #555;
+  border-radius: 50%;
+}
+
+.markerPos20:hover {
+ 
+  position: relative;
+  top: -107px;
+  left: 1201px;
+  height: 21px;
+  width: 21px;
+  background-color: yellow;
+  border-radius: 50%;
+}
+
+.mapArr {
+  position: absolute;
+    top: 84px;
+    right: 444px;
+}
+
+.modalToggle {
+  position: relative;
+  float: right;
+  top: -670px;
+  width: 1500px;
+  height: 650px;
+}
