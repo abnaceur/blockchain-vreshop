@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.media.Image;
 import android.provider.MediaStore;
+import android.support.annotation.RequiresPermission;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -14,15 +15,25 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
+import com.google.zxing.qrcode.encoder.QRCode;
 
 public class Home extends AppCompatActivity {
 
     public int REQUEST_IMAGE_CAPTURE = 1;
     public int FRAG2_PICTURE_SIZE = 200;
     public int SCAN_QRCODE = 12;
+    public int QRCODE_SIZE = 200;
     public Bitmap ThePhoto;
+    public Bitmap qrcode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,9 +103,89 @@ public class Home extends AppCompatActivity {
         }
     }
 
+    // Generate a QRCode from the string passed in argument
+//    Bitmap TextToImageEncode(String value) throws WriterException {
+//        BitMatrix bitmatrix;
+//        try {
+//            bitmatrix = new MultiFormatWriter().encode(value, BarcodeFormat.DATA_MATRIX.QR_CODE,
+//                    QRCODE_SIZE, QRCODE_SIZE, null);
+//        } catch (IllegalArgumentException Illegalargumentexception) {
+//            return null;
+//        }
+//
+//        int bitMatrixWidth = bitmatrix.getWidth();
+//        int bitMatrixHeight = bitmatrix.getHeight();
+//        int[] pixels = new int[bitMatrixHeight * bitMatrixWidth];
+//        for (int y = 0; y < bitMatrixHeight; y++) {
+//            int offset = y * bitMatrixWidth;
+//
+//            for(int x = 0; x < bitMatrixWidth; x++) {
+//                pixels[offset + x] = bitmatrix.get(x, y) ? getResources().getColor(R.color.QRCODE_BLACK) : getResources(R.color.QRCODE_WHITE);
+//            }
+//        }
+//        Bitmap bitmap = Bitmap.createBitmap(bitMatrixWidth, bitMatrixHeight, Bitmap.Config.ARGB_4444);
+//
+//            bitmap.setPixels(pixels, 0, QRCODE_SIZE, 0, 0, bitMatrixWidth, bitMatrixHeight);
+//            return bitmap;
+//    }
+
+        Bitmap TextToImageEncode(String value) throws WriterException {
+            BitMatrix bitMatrix;
+            try {
+                bitMatrix = new MultiFormatWriter().encode(value, BarcodeFormat.DATA_MATRIX.QR_CODE , 200, 200, null);
+            } catch (IllegalArgumentException i) {
+                return null;
+            }
+            int bitMatrixWidth = bitMatrix.getWidth();
+            int bitMatrixHeight = bitMatrix.getHeight();
+
+            int[] pixels = new int[bitMatrixWidth * bitMatrixHeight];
+            for (int y = 0; y < bitMatrixHeight; y++) {
+                int offset = y * bitMatrixWidth;
+                for (int x = 0; x < bitMatrixWidth; x++) {
+                    pixels[offset + x] = bitMatrix.get(x, y) ? getResources().getColor(R.color.QRCODE_BLACK) : getResources().getColor(R.color.QRCODE_WHITE);
+                }
+            }
+            qrcode = Bitmap.createBitmap(QRCODE_SIZE, QRCODE_SIZE, Bitmap.Config.ARGB_4444);
+            qrcode.setPixels(pixels, 0, QRCODE_SIZE, 0, 0, QRCODE_SIZE, QRCODE_SIZE);
+            return qrcode;
+        }
+
     // frag2 onClick sell product button
     public void frag2_Sell(View view) {
-        Log.e("C pa 1 error lol", "ok");
+        EditText editText = (EditText) findViewById(R.id.frag2_Description);
+        String description = editText.getText().toString();
+        ImageView photo = (ImageView) findViewById(R.id.frag2_img);
+        int description_width = photo.getWidth();
+        EditText editText1 = (EditText) findViewById(R.id.frag2_Price);
+        String price = editText1.getText().toString();
+        ImageView imageView = (ImageView) findViewById(R.id.frag2_qrcode);
+
+        if (description.length() == 0) {
+            Toast.makeText(this, "Add Description", Toast.LENGTH_LONG).show();
+            return;
+        } else if (price.length() == 0) {
+            Toast.makeText(this, "Add a price first", Toast.LENGTH_LONG).show();
+            return;
+        } else if (description_width == 0) {
+            Toast.makeText(this, "Take a picture first", Toast.LENGTH_LONG).show();
+            return;
+        } else {
+            try {
+                // Generate qrcode
+                qrcode = TextToImageEncode(description);
+//                imageView.setImageBitmap(qrcode);
+//                imageView.getLayoutParams().width = qrcode.getWidth();
+//                imageView.getLayoutParams().height = qrcode.getHeight();
+
+                // Show QRCODE in new activity
+                Intent intent = new Intent(this, Sell_QRCode.class);
+                intent.putExtra("qrcode", qrcode);
+                startActivity(intent);
+            } catch (WriterException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     // frag2 onClick take a picture of the product to sell
@@ -105,7 +196,7 @@ public class Home extends AppCompatActivity {
     }
 
     // scan QRCode with ZXing application
-    public void frag1_scanQRCode(View view){
+    public void frag1_scanQRCode(View view) {
         Intent intent = new Intent("com.google.zxing.client.android.SCAN");
         intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
         startActivityForResult(intent, SCAN_QRCODE);
@@ -141,5 +232,4 @@ public class Home extends AppCompatActivity {
             }
         }
     }
-
 }
