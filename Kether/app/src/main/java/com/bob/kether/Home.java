@@ -15,11 +15,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class Home extends AppCompatActivity {
 
     public int REQUEST_IMAGE_CAPTURE = 1;
     public int FRAG2_PICTURE_SIZE = 200;
+    public int SCAN_QRCODE = 12;
     public Bitmap ThePhoto;
 
     @Override
@@ -102,13 +104,21 @@ public class Home extends AppCompatActivity {
             startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
     }
 
+    // scan QRCode with ZXing application
+    public void frag1_scanQRCode(View view){
+        Intent intent = new Intent("com.google.zxing.client.android.SCAN");
+        intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
+        startActivityForResult(intent, SCAN_QRCODE);
+    }
+
     // frag2 get picture of the frag2_TakePicture method and display it on the ImageView
+    // retrive QRCode scan and decode it
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         ImageView imageView = (ImageView) findViewById(R.id.frag2_img);
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            // Retrive the picture from the extras
+            // Retrieve the picture from the extras
             Bundle extras = data.getExtras();
             // set the ImageView picture
             ThePhoto = (Bitmap) extras.get("data");
@@ -116,6 +126,20 @@ public class Home extends AppCompatActivity {
             // set size
             imageView.getLayoutParams().height = FRAG2_PICTURE_SIZE;
             imageView.getLayoutParams().width = FRAG2_PICTURE_SIZE;
+        } else if (requestCode == SCAN_QRCODE) {
+            if (resultCode == RESULT_OK) {
+                String contents = data.getStringExtra("SCAN_RESULT");
+                String format = data.getStringExtra("SCAN_RESULT_FORMAT");
+                // Handle successful scan
+                Toast.makeText(this, "OK, Successful scan", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(this, ProductBuy_Description.class);
+                intent.putExtra("Extra", contents);
+                startActivity(intent);
+            } else if (resultCode == RESULT_CANCELED) {
+                // Handle cancel
+                Toast.makeText(this, "Error with zxing app", Toast.LENGTH_LONG).show();
+            }
         }
     }
+
 }
