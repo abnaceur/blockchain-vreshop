@@ -13,7 +13,7 @@ public class HomemadeContract extends AppCompatActivity {
         Intent intent = getIntent();
         String str = intent.getExtras().getString("contract");
 
-        if (str.equals("Insurance Contract"))
+        if (str.equals("Automotive Insurance"))
             setContentView(R.layout.insurance_contract);
 //        else if (str.equals("Renting Contract"))
 //            setContentView(R.layout);

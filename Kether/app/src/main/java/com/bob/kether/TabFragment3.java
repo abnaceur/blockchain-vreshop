@@ -17,13 +17,20 @@ import android.widget.ArrayAdapter;
 public class TabFragment3 extends Fragment {
 
     String[] contract_templates = {
-            "Insurance Contract",
-            "Renting Contract",
-            "Debt Contract",
-            "Job Contract",
+            "Company Creation",
+            "Health Insurance",
+            "Automotive Insurance",
+            "Renting",
+            "Debt",
+            "Job",
             "Property Transfer",
-            "Money Transfer"
+            "Money Transfer",
+            "Bet",
+            "NGO Donation on condition",
+            "Mortgage",
+            "Challenge"
     };
+
     android.widget.ListView list_contracts;
 
     public TabFragment3() {

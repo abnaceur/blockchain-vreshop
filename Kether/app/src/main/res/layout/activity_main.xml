@@ -15,7 +15,7 @@
 
         <TextView
             android:id="@+id/login_title"
-            android:text="KETHER"
+            android:text="E/PAY"
             android:textStyle="bold"
             android:textColor="#EEE"
             android:textSize="30sp"
