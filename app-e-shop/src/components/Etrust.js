@@ -5,8 +5,9 @@ import Header from './Header';
 import Footer from './Footer';
 import Web3 from 'web3';
 import {ToastContainer, toast} from 'react-toastify';
+import HeaderEtrust from './HeaderEtrust';
 
-class Register extends Component {
+class Etrust extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -14,31 +15,22 @@ class Register extends Component {
          domain: '',
          boss: '',
          location: '',
+         array: [],
          myContract: [],
          notify: '',
          counter: 0,
          accounts: '',
          transactionHash: '',
          blockNumber: '',
+         result: '',
          gasUsed: '',
         };
-
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.otherFunction = this.otherFunction.bind(this);
     }
 
     componentWillMount() {
         if(typeof web3 !== 'undefined')
         web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'));
-
-        web3.eth.getAccounts().then(value => {
-            console.log('Accounts : ', value );
-            web3.eth.defaultAccount = value[10];
-            this.setState({
-                accounts: value
-            })
-        });
-
 
         const myContract = new web3.eth.Contract([
             {
@@ -155,65 +147,52 @@ class Register extends Component {
         });
 
         this.setState({myContract});
+
+        myContract.methods.getInfo().call((error, result) => {
+            this.otherFunction(result);
+          });
     }
 
-    handleChange(event) {
-        const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name;
-
+    otherFunction(value){
         this.setState({
-            [name]: value
+          result:value
         });
-    }
-
-    handleSubmit() {
-        this.state.counter += 1;
-        this.state.myContract.methods.initInfo(this.state.title, this.state.domain, this.state.boss, this.state.location).send({from: '0x6Abd228e4d94ccED7cf975924B583bE1be3BbFE0'}).then(function(result){
-
-        });
-
-        if (this.state.counter == 4) {
-            const notify = [
-                toast.success("You have been registered successfully ", {
-                    position: toast.POSITION.RIGHT_CENTER
-                })];
-            };
-    }
-
-
+  }
     
     render() {
 
         return (
-            <div class="conatiner ">
-                <Header/>
+        
+        
+        <div class="conatiner ">
+        <HeaderEtrust/>
+
                 <ToastContainer/>
                 <div id="fullscreen_bg" class="fullscreen_bg"/>
-    <div className="col-md-6 col-md-offset-3">
+    <div className="col-md-8">
         <div class="form-signin">
-            <h1 class="form-signin-heading text-muted">Company</h1>
-            <input type="text" onChange={this.handleChange} name="title" value={this.state.title} class="form-control" placeholder="Title"/>
-            <input type="text" onChange={this.handleChange} name="domain" value={this.state.domain} class="form-control" placeholder="Domain"/>
-            <input type="text" onChange={this.handleChange} name="boss"  value={this.state.boss} class="form-control" placeholder="Boss"/>
-            <input type="text"  onChange={this.handleChange} name="location" value={this.state.location} class="form-control" placeholder="Location"/>
-            <button onClick={this.handleSubmit} class="btn btn-lg btn-primary btn-block">
-                Register
-            </button>
-            <br></br>
-            <button class="btn btn-lg btn-primary btn-block">
-                Create eVoucher tokens
-            </button>
-            <br></br>
-            <Link to="/etrust">
-            <button class="btn btn-lg btn-primary btn-block">
-                Go to e-Trust platform!
-            </button>
-            </Link>
-            <br></br>
+           <div class="container">
+  <h2 style={{color: 'white'}}>History of registered companies in the ethereum blockchain</h2>      
+  <table style={{backgroundColor: 'white', position: 'relative', right: '154px'}} class="table table-bordered">
+    <thead>
+      <tr>
+            <th>Title</th>
+            <th>Domain</th>
+            <th>Boss</th>
+            <th>Location</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr>
+      <td>{this.state.result[0]}</td>
+      <td>{this.state.result[1]}</td>
+      <td>{this.state.result[3]}</td>
+      <td>{this.state.result[2]}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-            <p style={{color: 'white'}}>Once the information is validated <br></br>
-            It will be regitered in the ethereum blockchain for use in e-trust platform.</p>
         </div>
     </div>  
             
@@ -225,4 +204,4 @@ class Register extends Component {
 
     }
 
-    export default Register;
+    export default Etrust;

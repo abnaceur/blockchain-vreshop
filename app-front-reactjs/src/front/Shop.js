@@ -28,6 +28,7 @@ class Shop extends Component {
   <a href="#" class="w3-bar-item w3-button">Products</a>
   <a href="#" class="w3-bar-item w3-button">Scan QR code</a>
   <a href="#" class="w3-bar-item w3-button">Check us on e-Trust</a>
+  <a href="/welcome" class="w3-bar-item w3-button">Create an e-shop</a>
 </div>
 
             <center>

@@ -4,6 +4,7 @@ import axios from 'axios';
 import Header from './Header';
 import Footer from './Footer';
 import Web3 from 'web3';
+import Register from './Register';
 
 class Create extends Component {
     constructor(props) {
@@ -19,12 +20,6 @@ class Create extends Component {
         if(typeof web3 !== 'undefined')
         web3 = new Web3(new Web3.providers.HttpProvider('http://localhost:8545'));
          
-        web3.eth.getBalance("0x007CcfFb7916F37F7AEEf05E8096ecFbe55AFc2f").then(value => {
-            console.log('this value : ', value / 1000000000000000000, ' Ether' );
-            this.setState({
-                balance: value / 1000000000000000000
-            })
-        });
 
         web3.eth.getAccounts().then(value => {
             console.log('Accounts : ', value );
@@ -41,15 +36,27 @@ class Create extends Component {
             wallet
         })
 
-        const info = <div>
-            <h3 style={{color: 'white'}}>Wallet address : <strong>{wallet[0]['address']}</strong></h3>
-            <h3 style={{color: 'white'}}>Wallet private key : <strong>{wallet[0]['privateKey']}</strong></h3>
-            <p style={{color: 'white'}}>KEEP YOUR PRIVATE KEY SECRET</p>
+
+        web3.eth.getBalance(wallet[0]['address']).then(value => {
+            console.log('this value : ', value / 1000000000000000000, ' Ether' );
+            const info = <div>
+            <div class="panel panel-default">
+            <div class="panel-heading"><h3>Wallet info</h3></div>
+            <div class="panel-body"><b>Wallet address</b> : {wallet[0]['address']}<br></br>
+            <p><b>Your balance :</b> {value / 1000000000000000000} Ether</p><br></br>
+            <b>Wallet private key :</b> {wallet[0]['privateKey']}<br></br>
+            <p>KEEP YOUR PRIVATE KEY SECRET</p>
+            </div>
+            </div>
             <Link to="/register">
             <button class="btn btn-lg btn-primary btn-block">Step 2</button>
             </Link>
             </div>;
         this.setState({ info});
+            this.setState({
+                balance: value / 1000000000000000000
+            });
+        });
     }
 
     handleChange(event) {
@@ -59,10 +66,8 @@ class Create extends Component {
 
         this.setState({
             [name]: value
-        });
+        });h
     }
-
-
 
     
     render() {

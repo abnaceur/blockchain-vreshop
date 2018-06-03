@@ -1,37 +1,35 @@
-Smarter Paris with e-pay and e-trust 
+Smarter Paris with E-Pay, E-Trust and E-shop 
 ====================================
 
 ## Description of the project :
 
-A real representation of Paris boutiques, and bookings 
-A user can search by place or by categories or by need
-the results will be shown in a map where the user can have a 360 virtual visit to his shop.
-Check bookings and goods available.
+A real representation of Paris boutiques, and bookings.
+A user can search by place, categories or need.
+The results will be shown in a map where the user can have a 360 virtual reality visit 
+to his/her favorite shop.
 
-Payment will be done through an app (e-pay [ Rethink the name ]).
-User can leave a feedback which will be proccessed through sentient analytics.
+Payment will be done through a mobile App E-Pay.
 
 A bootique owner will have the possibility to create a shop.
 Verify his physical shop.
-Register his shop in the blockchain.
-Possibility to register his products to verify the enthanticity of this last by customer.
+Register his shop in the Ethereum blockchain.
+The possibility to register his products to verify the authenticity of this last by customers.
 Provide shop tokens as voucher for prime customers.
-Offer instant payment by QR code or facial recognition    
-
+Offer instant payment by QR code or facial recognition.    
 
 ====> Tokens as voucher
-- This will represent the voucher for each shop
-- Shop will be registered in a blockchain once veryfied
-- Possibility to verify the product as well.
+- This will represent the voucher for each shop.
+- Shops will be registered in a blockchain once they are veryfied.
+- The possibility to verify the product as well.
 
 ====> Instant e-payment [Scan code | facial recognition]
-An app binned to the user bank account.
-It can send funds from user to user using the same app.
+A Mobile app E-PAY binned to the user bank account.
+It can send funds from user to user using the same E-PAY service.
 Access the physical shops around a user.
-Perform all kind of transaction instentely.
+Perform all kind of transaction instantly.
 [Payment by QR | facial recognition].
-App can be user for chat and networking.
-The idea will gether "AI, Smart city, Smart payment, e-Trust"
+The E-PAY mobile app can be used for chatting and networking.
+The idea will gether "AI, Smart city, Smart payment, and e-Trust"
 
 
 ## Provided solutions :
@@ -41,40 +39,40 @@ The idea will gether "AI, Smart city, Smart payment, e-Trust"
 
 ## Team 
  - abnaceur : http://naceur-abdeljalil.com
- - mschmitt 
+ - mschmitt.
+ - Jerome : 
 
 ## Project's Goals and objectives
 
 E-SHOP : 
-1. Build an e-shop platform to present the physical shops online.
+1. Build an e-shop platform to represent the physical shops online.
 	A – Backoffice to create a shop and register it in the blockchain.
-	B – The shop owner can add a virtual reality visit to his shop
-	    Where products taged with the e-pay Qr bar can be sold.
+	B – The shop owner can add a virtual reality visit to his/her shop
+	    where products taged with the E-PAY QR bar code can be sold.
 	C – A customer can buy and/or book services.
-	D – A shop owner can register  his products in the blockchain (Backend).
+	D – A shop owner can register his products in the blockchain (Backend).
 
 User case : A customer can visit the shop, have a virtual reality experience and buy products
-by scaning Qr code and/or book a service. (Frontend)
+by scaning QR code and/or book a service. (Frontend)
 
 E-Trust : 
-1. A dapp application based on ethereum blockchain
+1. A Dapp application based on ethereum blockchain
 	1- A Contract to register a shop.
 	2- A Contract to register a product.
 	3- A Contract to create a voucher tocken for customers.
-	4- Build an explorer plateforn which shows all transaction.
-	    product and shop info in real time.
+	4- Build an explorer plateforn which shows all transactions.
+	    products and shops information in real time.
 
 E-PAY : 
 1. A mobile app payment system.
-	a. The app can generate Qr code (Sell).
-	b. The app is bindded to a bank account
-	c. The app can scan code (purchase).
-	d. The app can contain the tokens voucher.
-    e. The app is used in all kind of payment fast easy and secure.
+	a. The mobile app can generate QR code bares (Sell).
+	b. The mobile app is bindded to a bank account
+	c. The mobile app can a scan QR codebars (purchase).
+	d. The mobile app can contain the tokens voucher.
+    e. The mobile app is used in all kind of payment, fast, easy and secure.
 
-User case : Generate a Qr code for a product. Scan. Confirm the purchase,
+User case : Generate a QR code for a product. Scan. Confirm the purchase,
 	        Balance has been debited.
-
 
 
 ## Technologies :
@@ -92,19 +90,60 @@ User case : Generate a Qr code for a product. Scan. Confirm the purchase,
  
 ## Screenshots
 
+#### Main page
+
+![Alt text](http://naceur-abdeljalil.com/files/page01.png)
+
+#### Paris all districts interactive map
+
+![Alt text](http://naceur-abdeljalil.com/files/page02.png)
+
+#### Closer look to a selected district for a virtual experience
+
+![Alt text](http://naceur-abdeljalil.com/files/page03.png)
+
+#### A superMarket modal
+
+![Alt text](http://naceur-abdeljalil.com/files/page04.png)
+
+#### A virtual shopping page
+
+![Alt text](http://naceur-abdeljalil.com/files/page05.png)
+
+#### The E-shop login page
+
+![Alt text](http://naceur-abdeljalil.com/files/page07.png)
+
+#### Wallet creation
+
+![Alt text](http://naceur-abdeljalil.com/files/page09.png)
+
+#### Shop registration in the ethereum blockchain
+
+![Alt text](http://naceur-abdeljalil.com/files/page11.png)
+
+#### Mist wallet on the smart contract home page
+
+![Alt text](http://naceur-abdeljalil.com/files/page12.png)
+
+#### E-trust platform for paris regitered locations explorer
+
+![Alt text](http://naceur-abdeljalil.com/files/page13.png)
+
 
 ## Install the development environment
 
 Get the source:
 
 ```bash
-git clone https://me-me@bitbucket.org/me-me/hackathon-angelhack.git
+git clone https://me-me@bitbucket.org/me-me/angelhack2018x42.git
 ```
 
 Edit your `/etc/hosts` file:
 
 ```
 127.0.0.1   app.e-paris.local
+127.0.0.1   app.e-shop.local
 127.0.0.1   phpmyadmin.app.local 
 ```
 
@@ -162,19 +201,6 @@ Note : the option '-d' is for silent mode
 Connect to phpmyadmin on http://phpmyadmin.app.local/ 
 and create the database named 'e-paris'
 
-
-##### For testing do this steps : 
-
-
-#### For a new database 
-
-Create the tables for the database in the e-paris_app container
-
-```bash
-php artisan migrate
-```
-
-
 ### Install app_front_reactjs
 
 Navigate to the app-front-reactjs folder 
@@ -196,10 +222,28 @@ Create a symblic link for bundle.js
 ln app-front-reactjs/public/bundle.js public/js/bundle.js
 ```
 
+Navigate to the app-e-shop folder 
+
+```bash
+cd app-e-shop
+```
+
+then
+
+```bash
+# Install all dependencies.
+npm install
+```
+
+Create a symblic link for bundle-eshop.js 
+
+```bash
+sudo ln a/public/bundle.js ../public/js/bundle-eshop.js 
+```
 
 ### Connect to the database
 
-Start this link in your browser: phpmyadmin.e-paris.local
+Start this link in your browser: phpmyadmin.app.local
 P.S: Get sure that all your containers are up "docker ps".
 
 ```bash
