@@ -15,9 +15,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.zxing.BarcodeFormat;
@@ -40,6 +42,7 @@ public class Home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.home_tab);
         tabLayout.addTab(tabLayout.newTab().setText("Buy"));
@@ -236,4 +239,6 @@ public class Home extends AppCompatActivity {
             }
         }
     }
+
+
 }
