@@ -25,7 +25,8 @@
         <activity android:name=".SignIn" />
         <activity android:name=".ProductBuy_Description" />
         <activity android:name=".Sell_QRCode" />
-        <activity android:name=".ListView"></activity>
+        <activity android:name=".ListView" />
+        <activity android:name=".HomemadeContract"></activity>
     </application>
 
 </manifest>

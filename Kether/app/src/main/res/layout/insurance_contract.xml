@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1abc9c">
+
+    <RelativeLayout
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/Insurer"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:background="#EEE"
+            android:inputType="textPersonName"
+            android:hint="Insurer"
+            android:paddingLeft="10dp"
+            android:paddingStart="10dp"
+            android:textColorHint="#111" />
+
+        <EditText
+            android:id="@+id/Insured"
+            android:background="#EEE"
+            android:textColorHint="#111"
+            android:inputType="textPersonName"
+            android:hint="Insured"
+            android:paddingLeft="10dp"
+            android:paddingStart="10dp"
+            android:layout_below="@id/Insurer"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:layout_width="200dp"
+            android:layout_height="40dp" />
+
+        <EditText
+            android:id="@+id/Risk"
+            android:background="#EEE"
+            android:textColorHint="#111"
+            android:inputType="textPersonName"
+            android:hint="Risk Insured"
+            android:paddingLeft="10dp"
+            android:paddingStart="10dp"
+            android:layout_below="@id/Insured"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:layout_width="200dp"
+            android:layout_height="40dp" />
+
+        <EditText
+            android:id="@+id/Total"
+            android:background="#EEE"
+            android:textColorHint="#111"
+            android:inputType="number"
+            android:hint="Insurance Price"
+            android:paddingLeft="10dp"
+            android:paddingStart="10dp"
+            android:layout_below="@id/Risk"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:layout_width="200dp"
+            android:layout_height="40dp" />
+
+        <Button
+            android:id="@+id/pushContract"
+            android:background="#353839"
+            android:textColor="#EEE"
+            android:text="Push Contract"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/Total"
+            android:layout_width="200dp"
+            android:layout_height="40dp" />
+
+    </RelativeLayout>
+
+</ScrollView>
