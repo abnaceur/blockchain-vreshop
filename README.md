@@ -131,6 +131,36 @@ User case : Generate a QR code for a product. Scan. Confirm the purchase,
 ![Alt text](http://naceur-abdeljalil.com/files/page13.png)
 
 
+### Screenshots of the E-PAY mobile app
+
+#### Home page
+
+![Alt text](http://naceur-abdeljalil.com/files/30.png)
+
+#### scan and buy page
+
+![Alt text](http://naceur-abdeljalil.com/files/31.png)
+
+#### The options page
+
+![Alt text](http://naceur-abdeljalil.com/files/32.png)
+
+#### Generate the QR code bar
+
+![Alt text](http://naceur-abdeljalil.com/files/35.png)
+
+#### The generated QR code bar
+
+![Alt text](http://naceur-abdeljalil.com/files/34.png)
+
+#### List of assurance options
+
+![Alt text](http://naceur-abdeljalil.com/files/33.png)
+
+#### The page of an assurance
+
+![Alt text](http://naceur-abdeljalil.com/files/36.png)
+
 ## Install the development environment
 
 Get the source:
