@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1abc9c"
+    tools:context=".ProductBuy_Description">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/productBuy_title"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:text="Product Summary"
+            android:textAlignment="center"
+            android:textColor="#EEE"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/productBuy_descriptionHeader"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@id/productBuy_title"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Description"
+            android:textColor="#EEE" />
+
+        <TextView
+            android:id="@+id/productBuy_description"
+            android:layout_width="200dp"
+            android:layout_height="0dp"
+            android:layout_below="@id/productBuy_descriptionHeader"
+            android:layout_centerHorizontal="true"
+            android:textColor="#EEE"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/productBuy_priceHeader"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@id/productBuy_description"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Price"
+            android:textColor="#EEE" />
+
+        <TextView
+            android:id="@+id/productBuy_price"
+            android:layout_width="200dp"
+            android:layout_height="0dp"
+            android:layout_below="@id/productBuy_priceHeader"
+            android:layout_centerHorizontal="true"
+            android:textColor="#EEE"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/productBuy_buy"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/productBuy_price"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:background="#353839"
+            android:text="Buy!"
+            android:textColor="#EEE" />
+
+    </RelativeLayout>
+
+</ScrollView>
